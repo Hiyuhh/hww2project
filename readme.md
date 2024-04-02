@@ -65,7 +65,7 @@ back
 <br />
 <br />
 
-**3. Edit an exisiting contact:** *This function is where users can edit existing contacts that can be modified or updated with new information as needed. By typing in the phone number then by selecting the number of one of the options they would like to edit, as seen below:* 
+**2. Edit an exisiting contact:** *This function is where users can edit existing contacts that can be modified or updated with new information as needed. By typing in the phone number then by selecting the number of one of the options they would like to edit, as seen below:* 
 
 ```
 What is the phone number of the contact you would like to edit? (Back)
