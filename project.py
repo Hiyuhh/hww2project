@@ -1,6 +1,5 @@
 import re
-contact = { 1234567890 : {"Name" : "Haya Mubaidin", "Phone Number" : 1234567890,\
-"Email" : "h.mubaidin@valorant.com",  "Address" : "Amman, Jordan", "Additional Info" : "Valorant Pro Player"}}   
+contact = {1234567890:{"Name" : "Haya", "Phone Number" : 1234567890,"Email" : "Haya@github.com",  "Address" : "101 github", "Additional Info" : "Test"}}   
 
 def cli(): # Command Line Interface
     while True:
@@ -83,59 +82,59 @@ def edit_contact():
             contact[phone_number]
         except (AttributeError, KeyError): # Error Handling when the user inputs an invalid number
             print(f"\n\n\n{phone_number} Does not exist in your contacts! 📞✨\n")
-            for key, value in contact.items(): # Looping through the dictionary
-                try:
-                    if phone_number == key: # If the phone number is found in the dictionary
-                        print(f"\nWhat would you like to edit about {value['Name']}? (Back)\n") # Editing the contact
-                        edit_input = input("""
-                        1. Name
-                        2. Phone Number
-                        3. Email
-                        4. Address
-                        5. Additional Info
-                        6. Back To Menu
-                        """)
-                        if edit_input.lower() == "back": # Back to first input
-                            break
-                        elif int(edit_input) == 1: # Editing the name of the contact
-                            new_name = input(f"\nWhat is the new name of {value['Name']}?\n ") # input the new name
-                            print(f"\n{value['Name']} has been updated to {new_name}! 📞✨\n") # Updating the name
-                            contact[phone_number]["Name"] = new_name
-                        elif int(edit_input) == 2: # Editing the phone number of the contact
-                            new_number = int(input(f"\nWhat is the new phone number of {value['Name']}?\n "))  # input the new phone number
-                            new_number = re.sub(r"\D", "", phone_number) 
-                            new_number = re.search(r"\b\d{10}\b" , new_number).group() # Validating the phone number
-                            if new_number == None :
-                                print("\n\n\nInvalid phone number.. Try again! ༼ つ ◕_◕ ༽つ")
-                                continue                        
-                            contact[phone_number]["Phone Number"] = new_number 
-                            x = True 
-                            print(f"\n{value['Phone Number']} has been updated to {new_number}! 📞✨\n")  # Updating the phone number
-                        elif int(edit_input) == 3: # Editing the email of the contact
-                            new_email = input(f"\nWhat is the new email of {value['Name']}?\n ") # input the new email
-                            new_email = re.search(r"[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Z|a-z._-]{2,}" , new_email).group()
-                            if new_email == None:
-                                print("\n\n\nInvalid email.. Try again! ༼ つ ◕_◕ ༽つ")
-                                continue
-                            contact[phone_number]["Email"] = new_email
-                            print(f"\n{value['Email']} has been updated to {new_email}! 📞✨\n") # Updating the email
-                        elif int(edit_input) == 4: # Editing the address of the contact
-                            new_address = input(f"\nWhat is the new address of {value['Name']}?\n ") # input the new address
-                            contact[phone_number]["Address"] = new_address
-                            print(f"\n{value['Address']} has been updated to {new_address}! 📞✨\n") # Updating the address
-                        elif int(edit_input) == 5: # Editing the additional info of the contact
-                            new_info = input(f"\nWhat is the new additional info of {value['Name']}?\n ") # input the new additional info
-                            contact[phone_number]["Additional Info"] = new_info 
-                            print(f"\n{value['Additional Info']} has been updated to {new_info}! 📞✨\n") # Updating the Additional Info
-                        elif int(edit_input) == 6: # Back to the main menu 
-                            cli()
-                        else: # Error Handling when the user inputs an invalid number
-                            print("\n\n\nInvalid input.. Try again! ༼ つ ◕_◕ ༽つ")
-                except (AttributeError, ValueError): # Error Handling when the user inputs an invalid number
-                    print("\n\n\nInvalid input.. Try again! ༼ つ ◕_◕ ༽つ")
-            if x == True: # If the phone number is found in the dictionary
-                contact[new_number] = contact [phone_number] # Updating the phone number  
-                del contact[phone_number] # Deleting the old phone number
+        for key, value in contact.items(): # Looping through the dictionary
+            try:
+                if phone_number == key: # If the phone number is found in the dictionary
+                    print(f"\nWhat would you like to edit about {value['Name']}? (Back)\n") # Editing the contact
+                    edit_input = input("""
+                    1. Name
+                    2. Phone Number
+                    3. Email
+                    4. Address
+                    5. Additional Info
+                    6. Back To Menu
+                    """)
+                    if edit_input.lower() == "back": # Back to first input
+                        break
+                    elif int(edit_input) == 1: # Editing the name of the contact
+                        new_name = input(f"\nWhat is the new name of {value['Name']}?\n ") # input the new name
+                        print(f"\n{value['Name']} has been updated to {new_name}! 📞✨\n") # Updating the name
+                        contact[phone_number]["Name"] = new_name
+                    elif int(edit_input) == 2: # Editing the phone number of the contact
+                        new_number = int(input(f"\nWhat is the new phone number of {value['Name']}?\n "))  # input the new phone number
+                        new_number = re.sub(r"\D", "", phone_number) 
+                        new_number = re.search(r"\b\d{10}\b" , new_number).group() # Validating the phone number
+                        if new_number == None :
+                            print("\n\n\nInvalid phone number.. Try again! ༼ つ ◕_◕ ༽つ")
+                            # continue                        
+                        contact[phone_number]["Phone Number"] = new_number 
+                        x = True 
+                        print(f"\n{value['Phone Number']} has been updated to {new_number}! 📞✨\n")  # Updating the phone number
+                    elif int(edit_input) == 3: # Editing the email of the contact
+                        new_email = input(f"\nWhat is the new email of {value['Name']}?\n ") # input the new email
+                        new_email = re.search(r"[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Z|a-z._-]{2,}" , new_email).group()
+                        if new_email == None:
+                            print("\n\n\nInvalid email.. Try again! ༼ つ ◕_◕ ༽つ")
+                            # continue
+                        contact[phone_number]["Email"] = new_email
+                        print(f"\n{value['Email']} has been updated to {new_email}! 📞✨\n") # Updating the email
+                    elif int(edit_input) == 4: # Editing the address of the contact
+                        new_address = input(f"\nWhat is the new address of {value['Name']}?\n ") # input the new address
+                        contact[phone_number]["Address"] = new_address
+                        print(f"\n{value['Address']} has been updated to {new_address}! 📞✨\n") # Updating the address
+                    elif int(edit_input) == 5: # Editing the additional info of the contact
+                        new_info = input(f"\nWhat is the new additional info of {value['Name']}?\n ") # input the new additional info
+                        contact[phone_number]["Additional Info"] = new_info 
+                        print(f"\n{value['Additional Info']} has been updated to {new_info}! 📞✨\n") # Updating the Additional Info
+                    elif int(edit_input) == 6: # Back to the main menu 
+                        cli()
+                    else: # Error Handling when the user inputs an invalid number
+                        print("\n\n\nInvalid input.. Try again! ༼ つ ◕_◕ ༽つ")
+            except (AttributeError, ValueError): # Error Handling when the user inputs an invalid number
+                print("\n\n\nInvalid input.. Try again! ༼ つ ◕_◕ ༽つ")
+        if x == True: # If the phone number is found in the dictionary
+            contact[new_number] = contact [phone_number] # Updating the phone number  
+            del contact[phone_number] # Deleting the old phone number
 
 # edit_contact()            
     
@@ -168,13 +167,13 @@ def search_contact():
             contact[contacts]
         except (AttributeError, KeyError): # Error Handling when the user inputs an invalid number
             print(f"\n\n{contacts} Does not exist in your contacts! 📞✨\n")            
-            for key, value in contact.items():
-                try:
-                    if int(contacts) == key:
-                        print(f"\nContact📞✨\n \nName: {value['Name']}\nPhone Number: {value['Phone Number']}\
-                        \nEmail: {value['Email']}\nAddress: {value['Address']}\nAdditional Info: {value['Additional Info']}\n")
-                except (AttributeError, ValueError): # Error Handling when the user inputs an invalid number
-                    print(".. Try again! ༼ つ ◕_◕ ༽つ")
+        for key, value in contact.items():
+            try:
+                if int(contacts) == key:
+                    print(f"\nContact📞✨\n \nName: {value['Name']}\nPhone Number: {value['Phone Number']}\
+                    \nEmail: {value['Email']}\nAddress: {value['Address']}\nAdditional Info: {value['Additional Info']}\n")
+            except (AttributeError, ValueError): # Error Handling when the user inputs an invalid number
+                print(".. Try again! ༼ つ ◕_◕ ༽つ")
 
 # search_contact()
 
@@ -212,7 +211,9 @@ def export_contact(): # Exporting contacts to a text file
     try:
         with open ("contacts_files/default_contacts.txt", "w") as file: # Writing to the file
             for key in contact.keys():
-                file.write(f"{[key]} : {contact[key]}\n")
+                file.write("{")
+                file.write(f"'{key}': {contact[key]}")
+                file.write("}\n")            
             print("\nYour contacts have been exported to contacts_default.txt!\n")
         with open("contacts_files/contacts.txt", "w") as file:
             y = 0 
@@ -226,13 +227,19 @@ def export_contact(): # Exporting contacts to a text file
 # export_contact()
         
 def import_contacts(): # Importing contacts from a text file
-    try:
+    # try:
         with open("contacts_files/default_contacts.txt", "r") as file: # Reading from the file
             for line in file:
-                print(line)
-            print("\nYour contacts have been exported to contacts_default.txt!📞✨\n")
-    except (PermissionError, IOError): # Error Handling when the user inputs an invalid number
-        print("You don't have permission to read from this file.")
+                var = eval(line) # Evaluating the line
+                phone_number = re.search("[0-9]+", line).group() # Validating the phone number
+                var[phone_number]["Phone Number"] = int(var[phone_number]["Phone Number"]) # Converting the phone number to an integer
+                var2 = {} # Creating a new dictionary
+                var2[int(phone_number)] = var[phone_number] 
+                del var # Deleting the old dictionary
+                contact.update(var2) # Adding the contact to the dictionary
+            print("\nYour contacts have been imported to contacts_default.txt!📞✨\n")
+    # except (PermissionError, IOError): # Error Handling when the user inputs an invalid number
+    #     print("You don't have permission to read from this file.")
 
 # import_contacts()
 

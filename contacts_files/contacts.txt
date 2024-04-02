@@ -1,9 +1,7 @@
 
 Contact 1:
-Name: Haya Mubaidin
+Name: Haya
 Phone Number: 1234567890
-Email: h.mubaidin@valorant.com
-Address: Amman, Jordan
-Additional Info: Valorant Pro Player
-
-
+Email: Haya@github.com
+Address: 101 github
+Additional Info: Test
