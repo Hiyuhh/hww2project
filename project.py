@@ -51,6 +51,7 @@ def add_contact():
                 if phone_number == None :
                     print("\n\n\nInvalid phone number.. Try again! ༼ つ ◕_◕ ༽つ")
                     continue
+                phone_number = int(phone_number)
                 email = input(f"\nWhat's {name}'s email?\n ") # Adding email of the contact
                 email = re.search(r"[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Z|a-z._-]{2,}" , email).group()
                 if email == None:
@@ -73,12 +74,12 @@ def edit_contact():
             phone_number = input("\nWhat is the phone number of the contact you would like to edit? (Back)\n ") # Editing the contact
             if phone_number.lower() == "back": # Back to the main menu
                 break # back to the cli function (main menu)
-            phone_number = re.sub(r"\D", "", phone_number) 
+            phone_number = re.sub(r"\D", "", phone_number)
             phone_number = re.search(r"\b\d{10}\b" , phone_number).group() # Validating the phone number
-            phone_number = int(phone_number) # Converting the phone number to an integer
             if phone_number == None :
                 print("\n\n\nInvalid phone number.. Try again! ༼ つ ◕_◕ ༽つ")
-                continue                        
+                continue
+            phone_number = int(phone_number) 
             contact[phone_number]
         except (AttributeError, KeyError): # Error Handling when the user inputs an invalid number
             print(f"\n\n\n{phone_number} Does not exist in your contacts! 📞✨\n")
@@ -101,21 +102,23 @@ def edit_contact():
                         print(f"\n{value['Name']} has been updated to {new_name}! 📞✨\n") # Updating the name
                         contact[phone_number]["Name"] = new_name
                     elif int(edit_input) == 2: # Editing the phone number of the contact
-                        new_number = int(input(f"\nWhat is the new phone number of {value['Name']}?\n "))  # input the new phone number
-                        new_number = re.sub(r"\D", "", phone_number) 
+                        new_number = input(f"\nWhat is the new phone number of {value['Name']}?\n ")  # input the new phone number
+                        new_number = re.sub(r"\D", "", new_number) 
                         new_number = re.search(r"\b\d{10}\b" , new_number).group() # Validating the phone number
                         if new_number == None :
                             print("\n\n\nInvalid phone number.. Try again! ༼ つ ◕_◕ ༽つ")
-                            # continue                        
-                        contact[phone_number]["Phone Number"] = new_number 
-                        x = True 
+                            continue
+                        phone_number = int(phone_number)
+                        new_number = int(new_number)
                         print(f"\n{value['Phone Number']} has been updated to {new_number}! 📞✨\n")  # Updating the phone number
+                        x = True 
+                        contact[phone_number]["Phone Number"] = new_number 
                     elif int(edit_input) == 3: # Editing the email of the contact
                         new_email = input(f"\nWhat is the new email of {value['Name']}?\n ") # input the new email
                         new_email = re.search(r"[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Z|a-z._-]{2,}" , new_email).group()
                         if new_email == None:
                             print("\n\n\nInvalid email.. Try again! ༼ つ ◕_◕ ༽つ")
-                            # continue
+                            continue
                         contact[phone_number]["Email"] = new_email
                         print(f"\n{value['Email']} has been updated to {new_email}! 📞✨\n") # Updating the email
                     elif int(edit_input) == 4: # Editing the address of the contact
